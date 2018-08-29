@@ -9,7 +9,7 @@ namespace App\Interfaces;
 interface InputLoaderInterface
 {
     /**
-     * @return array
+     * @return \SplFixedArray
      */
-    public function get() : array;
+    public function get() : \SplFixedArray;
 }

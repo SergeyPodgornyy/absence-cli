@@ -9,9 +9,10 @@ namespace App\Interfaces;
 interface OutputLoaderInterface
 {
     /**
-     * @param array $data
+     * @param int            $year
+     * @param \SplFixedArray $data
      *
      * @return void
      */
-    public function output(array $data) : void;
+    public function output(int $year, \SplFixedArray $data) : void;
 }

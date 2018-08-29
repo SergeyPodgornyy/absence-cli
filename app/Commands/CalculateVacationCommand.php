@@ -51,12 +51,13 @@ class CalculateVacationCommand extends Command
             ? $this->option('year')
             : $this->ask('Which working year should be counted?', \date('Y'));
 
+        /** @var \SplFixedArray $data */
         $data = $this->inputLoader->get();
 
         // TODO: Process data
 
-        $this->outputLoader->output($data);
+        $this->outputLoader->output($year, $data);
 
-        $this->notify('Hey you', "Enjoy the fresh air from $year!");
+        $this->notify('Hey you', "Vacation report for $year done!", storage_path('logo.png'));
     }
 }
