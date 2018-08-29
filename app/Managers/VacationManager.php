@@ -4,5 +4,11 @@ namespace App\Managers;
 
 class VacationManager
 {
-    public const MIN_VACATION_DAYS = 26;
+    /** @var int */
+    private $minVacationDays;
+
+    public function __construct(int $minVacationDays)
+    {
+        $this->minVacationDays = $minVacationDays;
+    }
 }

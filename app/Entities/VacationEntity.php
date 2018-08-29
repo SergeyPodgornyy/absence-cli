@@ -5,12 +5,11 @@ namespace App\Entities;
 use App\Traits\PropertyAwareTrait;
 
 /**
- * Class InputEntity
+ * Class VacationEntity
  *
- * @property string     $fullName
- * @property string     $birthDate
- * @property string     $startDate
- * @property int|null   $vacationDays
+ * @property string $fullName
+ * @property int    $year
+ * @property int    $vacationDays
  */
 class VacationEntity
 {
@@ -19,11 +18,8 @@ class VacationEntity
     /** @var string */
     private $fullName;
 
-    /** @var string */
-    private $birthDate;
-
-    /** @var string */
-    private $startDate;
+    /** @var int */
+    private $year;
 
     /** @var int|null */
     private $vacationDays;

@@ -2,9 +2,10 @@
 
 namespace App\Managers\Loaders\Input;
 
-use App\Entities\VacationEntity;
 use App\Interfaces\InputLoaderInterface;
+use App\Managers\Adapters\FileUserAdapter;
 use App\Managers\FileManager;
+use App\Managers\Mappers\UserMapper;
 
 class JsonInputLoader implements InputLoaderInterface
 {
@@ -28,13 +29,9 @@ class JsonInputLoader implements InputLoaderInterface
         $result = new \SplFixedArray(\count($data));
 
         foreach ($data as $key => $item) {
-            $entity = new VacationEntity();
-            $entity->fullName = $item['full_name'];
-            $entity->birthDate = $item['birth_date'];
-            $entity->startDate = $item['start_date'];
-            $entity->vacationDays = $item['vacation_days'] ?: null;
+            $adapter = new FileUserAdapter($item);
 
-            $result[$key] = $entity;
+            $result[$key] = (new UserMapper($adapter))->get();
         }
 
         return $result;
