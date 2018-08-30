@@ -27,6 +27,20 @@ You can also provide optional parameter `year`:
     php absence-cli vacation:calculate --year=2017
 ```
 
+## Tests
+
+To run unit test, run the following command:
+
+```console
+    composer test
+```
+
+To check code according PSR:
+
+```console
+    composer check-style
+```
+
 ## License
 
 It is an open-source software licensed under the [MIT license](LICENSE.md).
