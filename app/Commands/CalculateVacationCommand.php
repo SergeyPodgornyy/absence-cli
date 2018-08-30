@@ -15,6 +15,9 @@ class CalculateVacationCommand extends Command
     /** @var OutputLoaderInterface */
     private $outputLoader;
 
+    /** @var VacationManager */
+    private $manager;
+
     /**
      * The signature of the command.
      *
@@ -38,6 +41,7 @@ class CalculateVacationCommand extends Command
 
         $this->inputLoader = $inputLoader;
         $this->outputLoader = $outputLoader;
+        $this->manager = $manager;
     }
 
     /**
@@ -51,12 +55,13 @@ class CalculateVacationCommand extends Command
             ? $this->option('year')
             : $this->ask('Which working year should be counted?', \date('Y'));
 
-        /** @var \SplFixedArray $data */
+        /** @var \SplFixedArray[App\Entities\UserEntity] $data */
         $data = $this->inputLoader->get();
 
-        // TODO: Process data
+        /** @var \SplFixedArray[App\Entities\VacationEntity] $data */
+        $result = $this->manager->calculate($data, $year);
 
-        $this->outputLoader->output($year, $data);
+        $this->outputLoader->output($year, $result);
 
         $this->notify('Hey you', "Vacation report for $year done!", storage_path('logo.png'));
     }
